@@ -1,4 +1,6 @@
-# primo-search-npm-package
+# Primo Search API
+
+This is a basic implementation of the ExLibris Primo Search API.
 
 Usage:
 `npm install @kenxirwin/primo-search-api`
