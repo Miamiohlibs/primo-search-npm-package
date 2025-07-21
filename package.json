@@ -1,0 +1,26 @@
+{
+  "name": "@kenxirwin/primo-search-api",
+  "version": "0.1.0",
+  "description": "Query the ExLibris Primo Search API",
+  "keywords": [
+    "ExLibris",
+    "Primo",
+    "library",
+    "search"
+  ],
+  "homepage": "https://github.com/Miamiohlibs/primo-search-npm-package#readme",
+  "bugs": {
+    "url": "https://github.com/Miamiohlibs/primo-search-npm-package/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Miamiohlibs/primo-search-npm-package.git"
+  },
+  "license": "MIT",
+  "author": "Ken Irwin",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
