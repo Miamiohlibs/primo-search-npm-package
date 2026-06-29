@@ -1,32 +1,57 @@
 // var https = require('https');
-import https from 'https';
+import https from 'node:https';
+
+// import type { PrimoSearchResponse } from './schemas/PrimoResponseSchema';
+
+export interface SearchApiParams {
+  baseUrl: string;
+  vid: string;
+  scope: string;
+  tab: string;
+  apiKey: string;
+}
+
+export interface AnyStringParams {
+  [key: string]: string;
+}
 
 export default class SearchApi {
-  constructor(params) {
-    const expectedKeys = ['baseUrl', 'vid', 'scope', 'tab', 'apiKey'];
-    for (const key of expectedKeys) {
-      if (!params.hasOwnProperty(key)) {
-        throw new Error(`Missing required option: ${key}`);
-      } else if (typeof params[key] !== 'string') {
-        throw new Error(
-          `Option ${key} must be a string; received ${typeof params[key]}`
-        );
-      } else if (params[key].trim() === '') {
-        throw new Error(`Option ${key} cannot be an empty string`);
-      } else {
-        this[key] = params[key].trim();
+  private readonly baseUrl: string;
+  private readonly vid: string;
+  private readonly scope: string;
+  private readonly tab: string;
+  private readonly apiKey: string;
+
+  constructor(params: SearchApiParams) {
+    const { baseUrl, vid, scope, tab, apiKey } = params;
+
+    for (const [name, value] of Object.entries({
+      baseUrl,
+      vid,
+      scope,
+      tab,
+      apiKey,
+    })) {
+      if (value.trim() === '') {
+        throw new Error(`${name} cannot be empty`);
       }
     }
+
+    this.baseUrl = baseUrl.trim();
+    this.vid = vid.trim();
+    this.scope = scope.trim();
+    this.tab = tab.trim();
+    this.apiKey = apiKey.trim();
   }
 
-  async search(query, params = {}) {
+  async search(query: string, params = {}) {
     if (typeof query !== 'string' || query.trim() === '') {
       throw new Error('Query must be a non-empty string');
     }
     return await this.performSearch(query, { ...params });
   }
 
-  async performSearch(query, addedParams = {}) {
+  async performSearch(query: string, addedParams: AnyStringParams = {}) {
     const apiPath = '/primo/v1/search';
 
     // console.log(`Searching for "${query}" with params:`);
@@ -55,7 +80,7 @@ export default class SearchApi {
     });
   }
 
-  async request(options) {
+  async request(options: any) {
     return new Promise((resolve, reject) => {
       https
         .get(options, (res) => {
