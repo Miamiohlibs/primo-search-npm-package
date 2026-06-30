@@ -5,11 +5,12 @@ import { SearchApi } from '../dist/index.js';
 import { primoSearchResponseSchema } from '../dist/schemas/PrimoResponseSchema.js';
 
 const searchApi = new SearchApi({
-  baseUrl: process.env.BASE_URL || '',
+  baseUrl: process.env.PRIMO_BASE_URL || '',
   apiKey: process.env.API_KEY || '',
   vid: process.env.VID_DEFAULT || '',
   scope: process.env.SCOPE_DEFAULT || '',
   tab: process.env.TAB_DEFAULT || '',
+  verbose: true,
 });
 
 describe('SearchApi', () => {

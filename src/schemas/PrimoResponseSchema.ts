@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { nullable, z } from 'zod';
 
 const stringArrayRecordSchema = z.record(z.string(), z.array(z.string()));
 
@@ -85,8 +85,8 @@ export const deliverySchema = z.object({
   fulltext: z.array(z.string()).optional(),
   delcategory: z.array(z.string()).optional(),
 
-  bestlocation: holdingSchema.optional(),
-  holding: z.array(holdingSchema).optional(),
+  bestlocation: holdingSchema.optional().nullable(),
+  holding: z.array(holdingSchema).optional().nullable(),
 
   electronicServices: z.unknown().optional(),
   additionalElectronicServices: z.unknown().optional(),
@@ -96,17 +96,17 @@ export const deliverySchema = z.object({
   deliveryCategory: z.array(z.string()).optional(),
   serviceMode: z.array(z.string()).optional(),
   availability: z.array(z.string()).optional(),
-  availabilityLinks: z.array(z.string()).optional(),
-  availabilityLinksUrl: z.array(z.string()).optional(),
+  availabilityLinks: z.array(z.string()).optional().nullable(),
+  availabilityLinksUrl: z.array(z.string()).optional().nullable(),
 
   displayedAvailability: z.unknown().optional(),
 
-  displayLocation: z.boolean().optional(),
-  additionalLocations: z.boolean().optional(),
+  displayLocation: z.boolean().optional().nullable(),
+  additionalLocations: z.boolean().optional().nullable(),
 
   physicalItemTextCodes: z.unknown().optional(),
 
-  feDisplayOtherLocations: z.boolean().optional(),
+  feDisplayOtherLocations: z.boolean().optional().nullable(),
 
   almaInstitutionsList: unknownArraySchema.optional(),
 
@@ -150,7 +150,7 @@ export const virtualBrowseSchema = z.object({
 
 export const enrichmentSchema = z.object({
   virtualBrowseObject: virtualBrowseSchema,
-  bibVirtualBrowseObject: virtualBrowseSchema,
+  bibVirtualBrowseObject: virtualBrowseSchema.optional(),
 });
 
 export const docSchema = z.object({

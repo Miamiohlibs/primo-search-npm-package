@@ -80,35 +80,7 @@ export declare const deliveryLinkSchema: z.ZodObject<{
 export declare const deliverySchema: z.ZodObject<{
     fulltext: z.ZodOptional<z.ZodArray<z.ZodString>>;
     delcategory: z.ZodOptional<z.ZodArray<z.ZodString>>;
-    bestlocation: z.ZodOptional<z.ZodObject<{
-        isValidUser: z.ZodBoolean;
-        organization: z.ZodString;
-        libraryCode: z.ZodString;
-        availabilityStatus: z.ZodString;
-        subLocation: z.ZodString;
-        subLocationCode: z.ZodString;
-        mainLocation: z.ZodString;
-        callNumber: z.ZodString;
-        callNumberType: z.ZodString;
-        holdingURL: z.ZodString;
-        adaptorid: z.ZodString;
-        ilsApiId: z.ZodString;
-        holdId: z.ZodString;
-        holKey: z.ZodString;
-        matchForHoldings: z.ZodArray<z.ZodObject<{
-            matchOn: z.ZodString;
-            holdingRecord: z.ZodString;
-        }, z.core.$strip>>;
-        stackMapUrl: z.ZodString;
-        relatedTitle: z.ZodNullable<z.ZodString>;
-        translateRelatedTitle: z.ZodNullable<z.ZodString>;
-        yearFilter: z.ZodNullable<z.ZodString>;
-        volumeFilter: z.ZodNullable<z.ZodString>;
-        singleUnavailableItemProcessType: z.ZodNullable<z.ZodString>;
-        boundWith: z.ZodBoolean;
-        '@id': z.ZodString;
-    }, z.core.$strip>>;
-    holding: z.ZodOptional<z.ZodArray<z.ZodObject<{
+    bestlocation: z.ZodNullable<z.ZodOptional<z.ZodObject<{
         isValidUser: z.ZodBoolean;
         organization: z.ZodString;
         libraryCode: z.ZodString;
@@ -136,6 +108,34 @@ export declare const deliverySchema: z.ZodObject<{
         boundWith: z.ZodBoolean;
         '@id': z.ZodString;
     }, z.core.$strip>>>;
+    holding: z.ZodNullable<z.ZodOptional<z.ZodArray<z.ZodObject<{
+        isValidUser: z.ZodBoolean;
+        organization: z.ZodString;
+        libraryCode: z.ZodString;
+        availabilityStatus: z.ZodString;
+        subLocation: z.ZodString;
+        subLocationCode: z.ZodString;
+        mainLocation: z.ZodString;
+        callNumber: z.ZodString;
+        callNumberType: z.ZodString;
+        holdingURL: z.ZodString;
+        adaptorid: z.ZodString;
+        ilsApiId: z.ZodString;
+        holdId: z.ZodString;
+        holKey: z.ZodString;
+        matchForHoldings: z.ZodArray<z.ZodObject<{
+            matchOn: z.ZodString;
+            holdingRecord: z.ZodString;
+        }, z.core.$strip>>;
+        stackMapUrl: z.ZodString;
+        relatedTitle: z.ZodNullable<z.ZodString>;
+        translateRelatedTitle: z.ZodNullable<z.ZodString>;
+        yearFilter: z.ZodNullable<z.ZodString>;
+        volumeFilter: z.ZodNullable<z.ZodString>;
+        singleUnavailableItemProcessType: z.ZodNullable<z.ZodString>;
+        boundWith: z.ZodBoolean;
+        '@id': z.ZodString;
+    }, z.core.$strip>>>>;
     electronicServices: z.ZodOptional<z.ZodUnknown>;
     additionalElectronicServices: z.ZodOptional<z.ZodUnknown>;
     filteredByGroupServices: z.ZodOptional<z.ZodUnknown>;
@@ -143,13 +143,13 @@ export declare const deliverySchema: z.ZodObject<{
     deliveryCategory: z.ZodOptional<z.ZodArray<z.ZodString>>;
     serviceMode: z.ZodOptional<z.ZodArray<z.ZodString>>;
     availability: z.ZodOptional<z.ZodArray<z.ZodString>>;
-    availabilityLinks: z.ZodOptional<z.ZodArray<z.ZodString>>;
-    availabilityLinksUrl: z.ZodOptional<z.ZodArray<z.ZodString>>;
+    availabilityLinks: z.ZodNullable<z.ZodOptional<z.ZodArray<z.ZodString>>>;
+    availabilityLinksUrl: z.ZodNullable<z.ZodOptional<z.ZodArray<z.ZodString>>>;
     displayedAvailability: z.ZodOptional<z.ZodUnknown>;
-    displayLocation: z.ZodOptional<z.ZodBoolean>;
-    additionalLocations: z.ZodOptional<z.ZodBoolean>;
+    displayLocation: z.ZodNullable<z.ZodOptional<z.ZodBoolean>>;
+    additionalLocations: z.ZodNullable<z.ZodOptional<z.ZodBoolean>>;
     physicalItemTextCodes: z.ZodOptional<z.ZodUnknown>;
-    feDisplayOtherLocations: z.ZodOptional<z.ZodBoolean>;
+    feDisplayOtherLocations: z.ZodNullable<z.ZodOptional<z.ZodBoolean>>;
     almaInstitutionsList: z.ZodOptional<z.ZodArray<z.ZodUnknown>>;
     recordInstitutionCode: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     recordOwner: z.ZodOptional<z.ZodString>;
@@ -201,11 +201,11 @@ export declare const enrichmentSchema: z.ZodObject<{
         callNumber: z.ZodString;
         callNumberBrowseField: z.ZodString;
     }, z.core.$strip>;
-    bibVirtualBrowseObject: z.ZodObject<{
+    bibVirtualBrowseObject: z.ZodOptional<z.ZodObject<{
         isVirtualBrowseEnabled: z.ZodBoolean;
         callNumber: z.ZodString;
         callNumberBrowseField: z.ZodString;
-    }, z.core.$strip>;
+    }, z.core.$strip>>;
 }, z.core.$strip>;
 export declare const docSchema: z.ZodObject<{
     context: z.ZodString;
@@ -224,35 +224,7 @@ export declare const docSchema: z.ZodObject<{
     delivery: z.ZodOptional<z.ZodObject<{
         fulltext: z.ZodOptional<z.ZodArray<z.ZodString>>;
         delcategory: z.ZodOptional<z.ZodArray<z.ZodString>>;
-        bestlocation: z.ZodOptional<z.ZodObject<{
-            isValidUser: z.ZodBoolean;
-            organization: z.ZodString;
-            libraryCode: z.ZodString;
-            availabilityStatus: z.ZodString;
-            subLocation: z.ZodString;
-            subLocationCode: z.ZodString;
-            mainLocation: z.ZodString;
-            callNumber: z.ZodString;
-            callNumberType: z.ZodString;
-            holdingURL: z.ZodString;
-            adaptorid: z.ZodString;
-            ilsApiId: z.ZodString;
-            holdId: z.ZodString;
-            holKey: z.ZodString;
-            matchForHoldings: z.ZodArray<z.ZodObject<{
-                matchOn: z.ZodString;
-                holdingRecord: z.ZodString;
-            }, z.core.$strip>>;
-            stackMapUrl: z.ZodString;
-            relatedTitle: z.ZodNullable<z.ZodString>;
-            translateRelatedTitle: z.ZodNullable<z.ZodString>;
-            yearFilter: z.ZodNullable<z.ZodString>;
-            volumeFilter: z.ZodNullable<z.ZodString>;
-            singleUnavailableItemProcessType: z.ZodNullable<z.ZodString>;
-            boundWith: z.ZodBoolean;
-            '@id': z.ZodString;
-        }, z.core.$strip>>;
-        holding: z.ZodOptional<z.ZodArray<z.ZodObject<{
+        bestlocation: z.ZodNullable<z.ZodOptional<z.ZodObject<{
             isValidUser: z.ZodBoolean;
             organization: z.ZodString;
             libraryCode: z.ZodString;
@@ -280,6 +252,34 @@ export declare const docSchema: z.ZodObject<{
             boundWith: z.ZodBoolean;
             '@id': z.ZodString;
         }, z.core.$strip>>>;
+        holding: z.ZodNullable<z.ZodOptional<z.ZodArray<z.ZodObject<{
+            isValidUser: z.ZodBoolean;
+            organization: z.ZodString;
+            libraryCode: z.ZodString;
+            availabilityStatus: z.ZodString;
+            subLocation: z.ZodString;
+            subLocationCode: z.ZodString;
+            mainLocation: z.ZodString;
+            callNumber: z.ZodString;
+            callNumberType: z.ZodString;
+            holdingURL: z.ZodString;
+            adaptorid: z.ZodString;
+            ilsApiId: z.ZodString;
+            holdId: z.ZodString;
+            holKey: z.ZodString;
+            matchForHoldings: z.ZodArray<z.ZodObject<{
+                matchOn: z.ZodString;
+                holdingRecord: z.ZodString;
+            }, z.core.$strip>>;
+            stackMapUrl: z.ZodString;
+            relatedTitle: z.ZodNullable<z.ZodString>;
+            translateRelatedTitle: z.ZodNullable<z.ZodString>;
+            yearFilter: z.ZodNullable<z.ZodString>;
+            volumeFilter: z.ZodNullable<z.ZodString>;
+            singleUnavailableItemProcessType: z.ZodNullable<z.ZodString>;
+            boundWith: z.ZodBoolean;
+            '@id': z.ZodString;
+        }, z.core.$strip>>>>;
         electronicServices: z.ZodOptional<z.ZodUnknown>;
         additionalElectronicServices: z.ZodOptional<z.ZodUnknown>;
         filteredByGroupServices: z.ZodOptional<z.ZodUnknown>;
@@ -287,13 +287,13 @@ export declare const docSchema: z.ZodObject<{
         deliveryCategory: z.ZodOptional<z.ZodArray<z.ZodString>>;
         serviceMode: z.ZodOptional<z.ZodArray<z.ZodString>>;
         availability: z.ZodOptional<z.ZodArray<z.ZodString>>;
-        availabilityLinks: z.ZodOptional<z.ZodArray<z.ZodString>>;
-        availabilityLinksUrl: z.ZodOptional<z.ZodArray<z.ZodString>>;
+        availabilityLinks: z.ZodNullable<z.ZodOptional<z.ZodArray<z.ZodString>>>;
+        availabilityLinksUrl: z.ZodNullable<z.ZodOptional<z.ZodArray<z.ZodString>>>;
         displayedAvailability: z.ZodOptional<z.ZodUnknown>;
-        displayLocation: z.ZodOptional<z.ZodBoolean>;
-        additionalLocations: z.ZodOptional<z.ZodBoolean>;
+        displayLocation: z.ZodNullable<z.ZodOptional<z.ZodBoolean>>;
+        additionalLocations: z.ZodNullable<z.ZodOptional<z.ZodBoolean>>;
         physicalItemTextCodes: z.ZodOptional<z.ZodUnknown>;
-        feDisplayOtherLocations: z.ZodOptional<z.ZodBoolean>;
+        feDisplayOtherLocations: z.ZodNullable<z.ZodOptional<z.ZodBoolean>>;
         almaInstitutionsList: z.ZodOptional<z.ZodArray<z.ZodUnknown>>;
         recordInstitutionCode: z.ZodOptional<z.ZodNullable<z.ZodString>>;
         recordOwner: z.ZodOptional<z.ZodString>;
@@ -340,11 +340,11 @@ export declare const docSchema: z.ZodObject<{
             callNumber: z.ZodString;
             callNumberBrowseField: z.ZodString;
         }, z.core.$strip>;
-        bibVirtualBrowseObject: z.ZodObject<{
+        bibVirtualBrowseObject: z.ZodOptional<z.ZodObject<{
             isVirtualBrowseEnabled: z.ZodBoolean;
             callNumber: z.ZodString;
             callNumberBrowseField: z.ZodString;
-        }, z.core.$strip>;
+        }, z.core.$strip>>;
     }, z.core.$strip>>;
 }, z.core.$strip>;
 export declare const primoSearchResponseSchema: z.ZodObject<{
@@ -375,35 +375,7 @@ export declare const primoSearchResponseSchema: z.ZodObject<{
         delivery: z.ZodOptional<z.ZodObject<{
             fulltext: z.ZodOptional<z.ZodArray<z.ZodString>>;
             delcategory: z.ZodOptional<z.ZodArray<z.ZodString>>;
-            bestlocation: z.ZodOptional<z.ZodObject<{
-                isValidUser: z.ZodBoolean;
-                organization: z.ZodString;
-                libraryCode: z.ZodString;
-                availabilityStatus: z.ZodString;
-                subLocation: z.ZodString;
-                subLocationCode: z.ZodString;
-                mainLocation: z.ZodString;
-                callNumber: z.ZodString;
-                callNumberType: z.ZodString;
-                holdingURL: z.ZodString;
-                adaptorid: z.ZodString;
-                ilsApiId: z.ZodString;
-                holdId: z.ZodString;
-                holKey: z.ZodString;
-                matchForHoldings: z.ZodArray<z.ZodObject<{
-                    matchOn: z.ZodString;
-                    holdingRecord: z.ZodString;
-                }, z.core.$strip>>;
-                stackMapUrl: z.ZodString;
-                relatedTitle: z.ZodNullable<z.ZodString>;
-                translateRelatedTitle: z.ZodNullable<z.ZodString>;
-                yearFilter: z.ZodNullable<z.ZodString>;
-                volumeFilter: z.ZodNullable<z.ZodString>;
-                singleUnavailableItemProcessType: z.ZodNullable<z.ZodString>;
-                boundWith: z.ZodBoolean;
-                '@id': z.ZodString;
-            }, z.core.$strip>>;
-            holding: z.ZodOptional<z.ZodArray<z.ZodObject<{
+            bestlocation: z.ZodNullable<z.ZodOptional<z.ZodObject<{
                 isValidUser: z.ZodBoolean;
                 organization: z.ZodString;
                 libraryCode: z.ZodString;
@@ -431,6 +403,34 @@ export declare const primoSearchResponseSchema: z.ZodObject<{
                 boundWith: z.ZodBoolean;
                 '@id': z.ZodString;
             }, z.core.$strip>>>;
+            holding: z.ZodNullable<z.ZodOptional<z.ZodArray<z.ZodObject<{
+                isValidUser: z.ZodBoolean;
+                organization: z.ZodString;
+                libraryCode: z.ZodString;
+                availabilityStatus: z.ZodString;
+                subLocation: z.ZodString;
+                subLocationCode: z.ZodString;
+                mainLocation: z.ZodString;
+                callNumber: z.ZodString;
+                callNumberType: z.ZodString;
+                holdingURL: z.ZodString;
+                adaptorid: z.ZodString;
+                ilsApiId: z.ZodString;
+                holdId: z.ZodString;
+                holKey: z.ZodString;
+                matchForHoldings: z.ZodArray<z.ZodObject<{
+                    matchOn: z.ZodString;
+                    holdingRecord: z.ZodString;
+                }, z.core.$strip>>;
+                stackMapUrl: z.ZodString;
+                relatedTitle: z.ZodNullable<z.ZodString>;
+                translateRelatedTitle: z.ZodNullable<z.ZodString>;
+                yearFilter: z.ZodNullable<z.ZodString>;
+                volumeFilter: z.ZodNullable<z.ZodString>;
+                singleUnavailableItemProcessType: z.ZodNullable<z.ZodString>;
+                boundWith: z.ZodBoolean;
+                '@id': z.ZodString;
+            }, z.core.$strip>>>>;
             electronicServices: z.ZodOptional<z.ZodUnknown>;
             additionalElectronicServices: z.ZodOptional<z.ZodUnknown>;
             filteredByGroupServices: z.ZodOptional<z.ZodUnknown>;
@@ -438,13 +438,13 @@ export declare const primoSearchResponseSchema: z.ZodObject<{
             deliveryCategory: z.ZodOptional<z.ZodArray<z.ZodString>>;
             serviceMode: z.ZodOptional<z.ZodArray<z.ZodString>>;
             availability: z.ZodOptional<z.ZodArray<z.ZodString>>;
-            availabilityLinks: z.ZodOptional<z.ZodArray<z.ZodString>>;
-            availabilityLinksUrl: z.ZodOptional<z.ZodArray<z.ZodString>>;
+            availabilityLinks: z.ZodNullable<z.ZodOptional<z.ZodArray<z.ZodString>>>;
+            availabilityLinksUrl: z.ZodNullable<z.ZodOptional<z.ZodArray<z.ZodString>>>;
             displayedAvailability: z.ZodOptional<z.ZodUnknown>;
-            displayLocation: z.ZodOptional<z.ZodBoolean>;
-            additionalLocations: z.ZodOptional<z.ZodBoolean>;
+            displayLocation: z.ZodNullable<z.ZodOptional<z.ZodBoolean>>;
+            additionalLocations: z.ZodNullable<z.ZodOptional<z.ZodBoolean>>;
             physicalItemTextCodes: z.ZodOptional<z.ZodUnknown>;
-            feDisplayOtherLocations: z.ZodOptional<z.ZodBoolean>;
+            feDisplayOtherLocations: z.ZodNullable<z.ZodOptional<z.ZodBoolean>>;
             almaInstitutionsList: z.ZodOptional<z.ZodArray<z.ZodUnknown>>;
             recordInstitutionCode: z.ZodOptional<z.ZodNullable<z.ZodString>>;
             recordOwner: z.ZodOptional<z.ZodString>;
@@ -491,11 +491,11 @@ export declare const primoSearchResponseSchema: z.ZodObject<{
                 callNumber: z.ZodString;
                 callNumberBrowseField: z.ZodString;
             }, z.core.$strip>;
-            bibVirtualBrowseObject: z.ZodObject<{
+            bibVirtualBrowseObject: z.ZodOptional<z.ZodObject<{
                 isVirtualBrowseEnabled: z.ZodBoolean;
                 callNumber: z.ZodString;
                 callNumberBrowseField: z.ZodString;
-            }, z.core.$strip>;
+            }, z.core.$strip>>;
         }, z.core.$strip>>;
     }, z.core.$strip>>;
     timelog: z.ZodRecord<z.ZodString, z.ZodUnion<readonly [z.ZodString, z.ZodNumber]>>;
