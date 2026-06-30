@@ -20,4 +20,10 @@ describe('SearchApi', () => {
     const results = primoSearchResponseSchema.parse(raw);
     expect(results).toEqual(raw);
   });
+  it('should find search results with a different search', async () => {
+    const searchQuery = 'any,contains,literature';
+    const raw = await searchApi.search(searchQuery, { limit: 2, lang: 'es' });
+    const results = primoSearchResponseSchema.parse(raw);
+    expect(results).toEqual(raw);
+  });
 });
