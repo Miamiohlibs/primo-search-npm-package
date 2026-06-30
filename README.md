@@ -50,8 +50,6 @@ let res = await searchApi.search(searchQuery, { limit: 2, lang: 'es' });
 Accepts params:
 
 ```
-
-
 interface SearchApiAddedParams {
   qInclude?: string;
   qExclude?: string;
