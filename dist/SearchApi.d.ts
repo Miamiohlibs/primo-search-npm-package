@@ -7,8 +7,26 @@ export interface SearchApiParams {
     apiKey: string;
     verbose?: boolean;
 }
-export interface AnyStringParams {
-    [key: string]: string;
+export interface SearchApiAddedParams {
+    qInclude?: string;
+    qExclude?: string;
+    multiFacets?: string;
+    journals?: string;
+    newspapersSearch?: boolean;
+    newspapersActive?: boolean;
+    pcAvailability?: boolean;
+    databases?: string;
+    lang?: string;
+    fromDate?: string;
+    offset?: number;
+    limit?: number;
+    sort?: string;
+    personalization?: string;
+    getMore?: string;
+    conVoc?: boolean;
+    inst?: string;
+    skipDelivery?: boolean;
+    disableSplitFacets?: boolean;
 }
 export default class SearchApi {
     private readonly baseUrl;
@@ -18,7 +36,7 @@ export default class SearchApi {
     private readonly apiKey;
     readonly verbose: boolean;
     constructor(params: SearchApiParams);
-    search(query: string, params?: {}): Promise<{
+    search(query: string, params?: SearchApiAddedParams): Promise<{
         info: {
             totalResultsLocal: number;
             totalResultsPC: number;
@@ -178,7 +196,7 @@ export default class SearchApi {
             }[];
         }[];
     }>;
-    performSearch(query: string, addedParams?: AnyStringParams): Promise<PrimoSearchResponse>;
+    performSearch(query: string, addedParams?: SearchApiAddedParams): Promise<PrimoSearchResponse>;
     request(options: any): Promise<string>;
 }
 //# sourceMappingURL=SearchApi.d.ts.map

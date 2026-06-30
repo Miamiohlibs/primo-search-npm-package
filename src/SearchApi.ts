@@ -16,8 +16,26 @@ export interface SearchApiParams {
   verbose?: boolean;
 }
 
-export interface AnyStringParams {
-  [key: string]: string;
+export interface SearchApiAddedParams {
+  qInclude?: string;
+  qExclude?: string;
+  multiFacets?: string;
+  journals?: string;
+  newspapersSearch?: boolean;
+  newspapersActive?: boolean;
+  pcAvailability?: boolean;
+  databases?: string;
+  lang?: string;
+  fromDate?: string;
+  offset?: number;
+  limit?: number;
+  sort?: string;
+  personalization?: string;
+  getMore?: string;
+  conVoc?: boolean;
+  inst?: string;
+  skipDelivery?: boolean;
+  disableSplitFacets?: boolean;
 }
 
 export default class SearchApi {
@@ -51,7 +69,7 @@ export default class SearchApi {
     this.verbose = verbose;
   }
 
-  async search(query: string, params = {}) {
+  async search(query: string, params: SearchApiAddedParams = {}) {
     if (typeof query !== 'string' || query.trim() === '') {
       throw new Error('Query must be a non-empty string');
     }
@@ -62,7 +80,7 @@ export default class SearchApi {
 
   async performSearch(
     query: string,
-    addedParams: AnyStringParams = {},
+    addedParams: SearchApiAddedParams = {},
   ): Promise<PrimoSearchResponse> {
     const apiPath = '/primo/v1/search';
     const urlString = this.baseUrl + apiPath;

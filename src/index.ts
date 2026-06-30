@@ -1,4 +1,8 @@
-export { default as SearchApi, SearchApiParams } from './SearchApi.js';
+export {
+  default as SearchApi,
+  SearchApiParams,
+  SearchApiAddedParams,
+} from './SearchApi.js';
 
 import { primoSearchResponseSchema } from './schemas/PrimoResponseSchema.js';
 export { primoSearchResponseSchema };
